@@ -130,6 +130,11 @@ public class UI {
 		if(quarto.gameState == quarto.tradeState) {
 			drawTradeScreen();
 		}
+		
+		// SLEEP STATE
+		if(quarto.gameState == quarto.sleepState) {
+			drawSleepScreen();
+		}
 	}
 	
 	public void drawPlayerLife() {
@@ -1010,6 +1015,29 @@ public class UI {
 
 					quarto.player.coin += price;
 				}
+			}
+		}
+	}
+	
+	public void drawSleepScreen() {
+		
+		counter++;
+		
+		if(counter < 120) {
+			quarto.eManager.lighting.filterAlpha += 0.01f;
+			if(quarto.eManager.lighting.filterAlpha > 1f) {
+				quarto.eManager.lighting.filterAlpha = 1f;
+			}
+		}
+		if(counter >= 120) {
+			quarto.eManager.lighting.filterAlpha -= 0.01f;
+			if(quarto.eManager.lighting.filterAlpha <= 0f) {
+				quarto.eManager.lighting.filterAlpha = 0f;
+				counter = 0;
+				quarto.eManager.lighting.dayState = quarto.eManager.lighting.day;
+				quarto.eManager.lighting.dayCounter = 0;
+				quarto.gameState = quarto.playState;
+				quarto.player.getplayerImage(); // DEVOLVENDO A IMAGEM DO PLAYER (ERA TENDA)
 			}
 		}
 	}

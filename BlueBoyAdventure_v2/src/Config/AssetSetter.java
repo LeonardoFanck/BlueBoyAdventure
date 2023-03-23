@@ -16,6 +16,7 @@ import object.OBJ_ManaCrystal;
 import object.OBJ_Potion;
 import object.OBJ_Shield;
 import object.OBJ_Sword_Normal;
+import object.OBJ_Tent;
 import tileInteractive.IT_DryTree;
 
 public class AssetSetter {
@@ -44,6 +45,11 @@ public class AssetSetter {
 		quarto.obj[mapNum][i] = new OBJ_Chest(quarto, new OBJ_Key(quarto));
 		quarto.obj[mapNum][i].mundoX = quarto.tileSize*22;
 		quarto.obj[mapNum][i].mundoY = quarto.tileSize*23;
+		i++;
+		
+		quarto.obj[mapNum][i] = new OBJ_Tent(quarto);
+		quarto.obj[mapNum][i].mundoX = quarto.tileSize*19;
+		quarto.obj[mapNum][i].mundoY = quarto.tileSize*20;
 		i++;
 		
 //		quarto.obj[mapNum][i] = new OBJ_Coin_Bronze(quarto);

@@ -7,7 +7,7 @@ import Screens.Quarto;
 public class EnvironmentManager {
 
 	Quarto quarto;
-	Lighting lighting;
+	public Lighting lighting;
 	
 	public EnvironmentManager(Quarto quarto) {
 		
