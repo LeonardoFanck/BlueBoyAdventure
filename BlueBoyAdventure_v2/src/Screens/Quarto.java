@@ -30,6 +30,8 @@ import java.util.Comparator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
+
+import tile.Map;
 import tile.tileManager;
 import tileInteractive.InteractiveTile;
 
@@ -77,6 +79,7 @@ public class Quarto extends JPanel implements Runnable{
     public Config config = new Config(this);
     public PathFinder pFinder = new PathFinder(this);
     public EnvironmentManager eManager = new EnvironmentManager(this);
+    public Map map = new Map(this);
     Thread gameThread;
     
     // ENTIDADES E OBJETOS
@@ -102,6 +105,7 @@ public class Quarto extends JPanel implements Runnable{
     public final int transitionState = 7;
     public final int tradeState = 8;
     public final int sleepState = 9;
+    public final int mapState = 10;
     
     public Quarto(){
         
@@ -313,6 +317,10 @@ public class Quarto extends JPanel implements Runnable{
         if(gameState == titleState) {
         	ui.draw(g2);
         }
+        // MAP SCREEN
+        else if(gameState == mapState) {
+        	map.drawFullMapScreen(g2);
+        }
         // OUTROS
         else {
         	
@@ -378,6 +386,9 @@ public class Quarto extends JPanel implements Runnable{
             
             // ENVIRONMENT
             eManager.draw(g2);
+            
+            // MINI MAP
+            map.drawMiniMap(g2);
             
             // UI
             ui.draw(g2);

@@ -5,6 +5,7 @@
  */
 package Config;
 
+import java.awt.RenderingHints.Key;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -73,6 +74,11 @@ public class KeyHandler implements KeyListener{
         // TRADE STATE
         else if(quarto.gameState == quarto.tradeState) {
         	tradeState(code);
+        }
+        
+        // MAP STATE
+        else if(quarto.gameState == quarto.mapState) {
+        	mapState(code);
         }
     }
     
@@ -168,6 +174,17 @@ public class KeyHandler implements KeyListener{
         }
         if(code == KeyEvent.VK_ESCAPE) {
         	quarto.gameState = quarto.optionState;
+        }
+        if(code == KeyEvent.VK_M) {
+        	quarto.gameState = quarto.mapState;
+        }
+        if(code == KeyEvent.VK_X) {
+        	if(quarto.map.miniMapOn == false) {
+        		quarto.map.miniMapOn = true;
+        	}
+        	else {
+        		quarto.map.miniMapOn = false;
+        	}
         }
         
         // DEBUG
@@ -337,6 +354,13 @@ public class KeyHandler implements KeyListener{
     		if(code == KeyEvent.VK_ESCAPE) {
     			quarto.ui.subState = 0;
     		}
+    	}
+    }
+    
+    public void mapState(int code) {
+    	
+    	if(code == KeyEvent.VK_M) {
+    		quarto.gameState = quarto.playState;
     	}
     }
     
